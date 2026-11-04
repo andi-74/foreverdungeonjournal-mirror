@@ -47,7 +47,6 @@ class CFScraper:
             "WoW Classic": "-classic",
             "WoW Burning Crusade Classic": "-bc",
             "WoW Wrath of the Lich King Classic": "-wrath",
-            "WoW Forever": "-forever"
         }
 
         self.scraper_api_key = os.getenv("SCRAPER_API_KEY")
@@ -108,21 +107,18 @@ class CFScraper:
         headers = {"Accept": "application/json", "x-api-key": self.curseforge_api_key}
 
         curseforge_mapping = {
-            # "WoW Retail": self.scraper.get(
-            #     f"https://api.curseforge.com/v1/mods/{mod_id}/files?gameVersionTypeId=517", headers=headers
-            # ).json()["data"],
-            # "WoW Classic": self.scraper.get(
-            #     f"https://api.curseforge.com/v1/mods/{mod_id}/files?gameVersionTypeId=67408", headers=headers
-            # ).json()["data"],
-            # "WoW Burning Crusade Classic": self.scraper.get(
-            #     f"https://api.curseforge.com/v1/mods/{mod_id}/files?gameVersionTypeId=73246", headers=headers
-            # ).json()["data"],
-            # "WoW Wrath of the Lich King Classic": self.scraper.get(
-            #     f"https://api.curseforge.com/v1/mods/{mod_id}/files?gameVersionTypeId=73713", headers=headers
-            # ).json()["data"],
-            "WoW Forever": self.scraper.get(
-                f"https://api.curseforge.com/v1/mods/{mod_id}/files?gameVersionTypeId=88568", headers=headers
-            ).json()["data"]
+            "WoW Retail": self.scraper.get(
+                f"https://api.curseforge.com/v1/mods/{mod_id}/files?gameVersionTypeId=517", headers=headers
+            ).json()["data"],
+            "WoW Classic": self.scraper.get(
+                f"https://api.curseforge.com/v1/mods/{mod_id}/files?gameVersionTypeId=67408", headers=headers
+            ).json()["data"],
+            "WoW Burning Crusade Classic": self.scraper.get(
+                f"https://api.curseforge.com/v1/mods/{mod_id}/files?gameVersionTypeId=73246", headers=headers
+            ).json()["data"],
+            "WoW Wrath of the Lich King Classic": self.scraper.get(
+                f"https://api.curseforge.com/v1/mods/{mod_id}/files?gameVersionTypeId=73713", headers=headers
+            ).json()["data"],
         }
         curseforge_mapping = {
             k: v[0] if "nolib" not in v[0]["displayName"] else v[1] for k, v in curseforge_mapping.items() if v
